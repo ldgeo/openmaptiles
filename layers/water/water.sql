@@ -48,9 +48,7 @@ CREATE OR REPLACE FUNCTION water_class(waterway TEXT) RETURNS TEXT AS $$
            %%FIELD_MAPPING: class %%
            ELSE 'river'
    END;
-$$
-LANGUAGE SQL
-IMMUTABLE PARALLEL SAFE;
+$$ LANGUAGE SQL IMMUTABLE;
 
 
 CREATE OR REPLACE FUNCTION waterway_brunnel(is_bridge BOOL, is_tunnel BOOL) RETURNS TEXT AS $$
@@ -58,9 +56,7 @@ CREATE OR REPLACE FUNCTION waterway_brunnel(is_bridge BOOL, is_tunnel BOOL) RETU
         WHEN is_bridge THEN 'bridge'
         WHEN is_tunnel THEN 'tunnel'
     END;
-$$
-LANGUAGE SQL
-IMMUTABLE STRICT PARALLEL SAFE;
+$$ LANGUAGE SQL IMMUTABLE STRICT;
 
 
 
@@ -379,6 +375,4 @@ RETURNS TABLE(geometry geometry, class text, brunnel text, intermittent int) AS 
         SELECT * FROM water_z14 WHERE zoom_level >= 14
     ) AS zoom_levels
     WHERE geometry && bbox;
-$$
-LANGUAGE SQL
-IMMUTABLE PARALLEL SAFE;
+$$ LANGUAGE SQL IMMUTABLE;

@@ -13,9 +13,7 @@ CREATE OR REPLACE FUNCTION landcover_class(subclass VARCHAR) RETURNS TEXT AS $$
     SELECT CASE
         %%FIELD_MAPPING: class %%
     END;
-$$
-LANGUAGE SQL
-IMMUTABLE PARALLEL SAFE;
+$$ LANGUAGE SQL IMMUTABLE;
 
 -- etldoc: ne_110m_glaciated_areas ->  landcover_z0
 CREATE OR REPLACE VIEW landcover_z0 AS (
@@ -130,6 +128,4 @@ RETURNS TABLE(osm_id bigint, geometry geometry, class text, subclass text) AS $$
         SELECT *
         FROM landcover_z14 WHERE zoom_level >= 14 AND geometry && bbox
     ) AS zoom_levels;
-$$
-LANGUAGE SQL
-IMMUTABLE PARALLEL SAFE;
+$$ LANGUAGE SQL IMMUTABLE;

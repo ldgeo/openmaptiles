@@ -96,6 +96,4 @@ RETURNS TABLE(osm_id bigint, geometry geometry, name text, name_en text,
     FROM layer_city(bbox, zoom_level, pixel_width)
     ORDER BY "rank" ASC
     ) AS place_all
-$$
-LANGUAGE SQL
-IMMUTABLE PARALLEL SAFE;
+$$ LANGUAGE SQL IMMUTABLE;

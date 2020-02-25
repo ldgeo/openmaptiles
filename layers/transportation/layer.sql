@@ -1,8 +1,6 @@
 CREATE OR REPLACE FUNCTION highway_is_link(highway TEXT) RETURNS BOOLEAN AS $$
     SELECT highway LIKE '%_link';
-$$
-LANGUAGE SQL
-IMMUTABLE STRICT PARALLEL SAFE;
+$$ LANGUAGE SQL IMMUTABLE STRICT;
 
 
 -- etldoc: layer_transportation[shape=record fillcolor=lightpink, style="rounded,filled",
@@ -368,6 +366,4 @@ indoor INT, bicycle TEXT, foot TEXT, horse TEXT, mtb_scale TEXT, surface TEXT) A
     ) AS zoom_levels
     WHERE geometry && bbox
     ORDER BY z_order ASC;
-$$
-LANGUAGE SQL
-IMMUTABLE PARALLEL SAFE;
+$$ LANGUAGE SQL IMMUTABLE;

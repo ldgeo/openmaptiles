@@ -126,6 +126,4 @@ RETURNS TABLE(osm_id bigint, geometry geometry, name text, name_en text,
     ) AS zoom_levels
     WHERE geometry && bbox
     ORDER BY z_order ASC;
-$$
-LANGUAGE SQL
-IMMUTABLE PARALLEL SAFE;
+$$ LANGUAGE SQL IMMUTABLE;

@@ -7,6 +7,4 @@ RETURNS TABLE(osm_id bigint, geometry geometry, housenumber text) AS $$
    -- etldoc: osm_housenumber_point -> layer_housenumber:z14_
     SELECT osm_id, geometry, housenumber FROM osm_housenumber_point
     WHERE zoom_level >= 14 AND geometry && bbox;
-$$
-LANGUAGE SQL
-IMMUTABLE PARALLEL SAFE;
+$$ LANGUAGE SQL IMMUTABLE;

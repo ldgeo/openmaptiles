@@ -40,6 +40,4 @@ RETURNS TABLE(geometry geometry, class text, ref text) AS $$
         FROM osm_aeroway_polygon WHERE zoom_level >= 14
     ) AS zoom_levels
     WHERE geometry && bbox;
-$$
-LANGUAGE SQL IMMUTABLE
-PARALLEL SAFE;
+$$ LANGUAGE SQL IMMUTABLE;
